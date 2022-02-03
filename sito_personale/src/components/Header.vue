@@ -1,5 +1,5 @@
 <template>
-    <nav class="bg-gray-100 shadow dark:bg-gray-800">
+    <nav class="bg-white shadow dark:bg-gray-800">
         <div class="max-w-7xl m-auto">
             <div class=" flex space-x-20 h-16 items-center">
             <a href="#about" class="italic">About</a>
