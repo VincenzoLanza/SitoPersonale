@@ -7,14 +7,20 @@
             <div class="bg-gray-100 pl-5">
                 {{subTitle}}
             </div>
-            <div class="flex bg-gray-100 text-sm text-gray-500 row-span-2 justify-end pr-10">
-                {{text}}
+            <div v-if="dizionarioFile.format==='pdf'" class="flex bg-gray-100 text-sm text-gray-500 row-span-2 justify-end pr-10">
+                <button type="button" v-on:click="printaPDF()">
+                    Print PDF
+                </button>
+            </div>         
+            <div v-else class="flex bg-gray-100 text-sm text-gray-500 row-span-2 justify-end pr-10">
+                {{dizionarioFile}}
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import printJS from 'print-js'
 export default {
     props:{
         title:{
@@ -25,11 +31,15 @@ export default {
             type:String,
             default:"sottotitolo default"
         },
-        text:{
-            type:String,
-            default:"testo default"
+        dizionarioFile:{
+            type:Object,
         }
     },
+    methods:{
+        printaPDF(){
+            printJS('../@/assets/sole_la_nostra_stella.pdf')
+        }
+    }
 }
 </script>
 
