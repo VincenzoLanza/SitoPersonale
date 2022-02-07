@@ -16,12 +16,14 @@
       <carta :title="elem.titolo" :subTitle="elem.sottotitolo" :dizionarioFile="elem.testo"></carta>
     </div>
     <div class="flex justify-center">
-      <button v-on:click="toggleModal =! toggleModal" class="text-white rounded bg-pink-500 shadow-lg">
-        Delete
+      <modale></modale>
+      <button v-on:click="showModal = true" id="showModal">
+        Show Modal
       </button>
-      <div v-if="toggleModal" class="absolute z-10 inset-0 opacity-25 bg-pink-400">
+      <transition name="modal">
+      <modal v-if="showModal" @close="showModal = false"></modal>
+      </transition>
       </div>
-    </div>
     <footer class="text-center bg-red-200" id="Contacts" >Email: vince.lanza01@gmail.com Tel: 3913893652</footer>
   </div>
 </template>
@@ -30,9 +32,10 @@
 import Header1 from './components/Header.vue'
 import carta from './components/Carta.vue'
 import divider from './components/divider.vue'
+import Modale from './components/Modale.vue'
 
 export default {
-  components: {Header1,divider,carta},
+  components: {Header1,divider,carta,Modale},
   data(){
     return{
       cartaEducation: [
@@ -44,7 +47,7 @@ export default {
         {titolo : "Stage Quarta Superiore", sottotitolo :"Applyx S.r.l.", testo :{text: "/home/aidia/Downloads", format: "pdf"}},
         {titolo : "Stage Terza Superiore", sottotitolo :"Applyx S.r.l.", testo :{text: "/home/aidia/Downloads", format: "pdf"}}
       ],
-      toggleModal : false
+      showModal : false
     }
   }
 }
@@ -53,5 +56,6 @@ export default {
 <style>
 body{
   background-color: rgb(209 213 219);
+  
 }
 </style>
