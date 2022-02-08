@@ -3,15 +3,11 @@
       <div class="modal-wrapper">
         <div class="modal-container">
 
-          <div class="modal-header">
-            <slot name="header">
-              default header
-            </slot>
-          </div>
-
-          <div class="modal-body">
-            <slot name="body">
-              default body
+          <div class="modal-pdf">
+            <slot name="pdf">
+              <object data="/files/sole_la_nostra_stella.pdf" type="application/pdf">
+                <iframe src="/files/sole_la_nostra_stella.pdf"></iframe>
+              </object>
             </slot>
           </div>
 
@@ -59,15 +55,6 @@ export default {
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   font-family: Helvetica, Arial, sans-serif;
-}
-
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
-
-.modal-body {
-  margin: 20px 0;
 }
 
 .modal-default-button {

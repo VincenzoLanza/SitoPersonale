@@ -16,12 +16,11 @@
       <carta :title="elem.titolo" :subTitle="elem.sottotitolo" :dizionarioFile="elem.testo"></carta>
     </div>
     <div class="flex justify-center">
-      <modale></modale>
+      <modale v-if="showModal" @close="showModal = false"></modale>
       <button v-on:click="showModal = true" id="showModal">
         Show Modal
       </button>
       <transition name="modal">
-      <modal v-if="showModal" @close="showModal = false"></modal>
       </transition>
       </div>
     <footer class="text-center bg-red-200" id="Contacts" >Email: vince.lanza01@gmail.com Tel: 3913893652</footer>
@@ -35,7 +34,7 @@ import divider from './components/divider.vue'
 import Modale from './components/Modale.vue'
 
 export default {
-  components: {Header1,divider,carta,Modale},
+  components: {Header1,divider,carta, Modale},
   data(){
     return{
       cartaEducation: [

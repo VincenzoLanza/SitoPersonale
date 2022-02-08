@@ -8,8 +8,10 @@
                 {{subTitle}}
             </div>
             <div v-if="dizionarioFile.format==='pdf'" class="flex bg-gray-100 text-sm text-gray-500 row-span-2 justify-end pr-10">
-                <button type="button" v-on:click="$refs.myPdfComponent.print()">Printa Pdf</button>
-                <pdf ref="myPdfComponent" src="./assets/sole_la_nostra_stella.pdf"></pdf>
+                <object data="/files/sole_la_nostra_stella.pdf" type="application/pdf" v-if="controllo==true">
+                    <iframe src="/files/sole_la_nostra_stella.pdf" style='height: 100%; width: 100%;' frameborder="0" scrolling="no"></iframe>
+                </object>
+                <button type="button" v-on:click="controllo=true">Printa Pdf</button>             
             </div>         
             <div v-else class="flex bg-gray-100 text-sm text-gray-500 row-span-2 justify-end pr-10">
                 {{dizionarioFile.text}}
@@ -19,10 +21,11 @@
 </template>
 
 <script>
-import pdf from 'vue-pdf'
 export default {
-    components:{
-        pdf
+    data() {
+        return {
+            controllo : false
+        }
     },
     props:{
         title:{
